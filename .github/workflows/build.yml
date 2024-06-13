@@ -3,7 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - enh/1/*  # Modify this to match your repository's default branch
+      - enh/3/*  # Modify this to match your repository's default branch
 
 jobs:
   build-and-push:
