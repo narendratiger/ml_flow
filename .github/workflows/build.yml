@@ -30,8 +30,8 @@ jobs:
         run: echo narendakumar291/housing-price-predictor:${{ github.sha }}
 
       - name: create new tag
-        run:  docker tag narendakumar291/housing-price-predictor:${{ github.sha }} narendrakumar291/test2:v3
+        run:  docker tag narendakumar291/housing-price-predictor:${{ github.sha }} narendrakumar291/ml_flow:v3
 
       - name: Push Docker image to DockerHub
-        run: docker push narendrakumar291/test2:v3
+        run: docker push narendrakumar291/ml_flow:v3
 
