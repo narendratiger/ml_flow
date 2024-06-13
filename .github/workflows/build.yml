@@ -26,7 +26,12 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t narendakumar291/housing-price-predictor:${{ github.sha }} .
+      - name: printcreds2
+        run: echo narendakumar291/housing-price-predictor:${{ github.sha }}
+
+      - name: create new tag
+        run:  docker tag narendakumar291/housing-price-predictor:${{ github.sha }} narendrakumar291/test2:v3
 
       - name: Push Docker image to DockerHub
-        run: docker push narendakumar291/housing-price-predictor:${{ github.sha }}
+        run: docker push narendrakumar291/test2:v3
 
