@@ -1,0 +1,37 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - enh/1/*  # Modify this to match your repository's default branch
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: printcreds
+        run: echo ${{ secrets.DOCKERHUB_USERNAME }}
+      - name: printcreds2
+        run: echo ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: docker build -t narendakumar291/housing-price-predictor:${{ github.sha }} .
+      - name: printcreds2
+        run: echo narendakumar291/housing-price-predictor:${{ github.sha }}
+
+      - name: create new tag
+        run:  docker tag narendakumar291/housing-price-predictor:${{ github.sha }} narendrakumar291/test2:v3
+
+      - name: Push Docker image to DockerHub
+        run: docker push narendrakumar291/test2:v3
+
