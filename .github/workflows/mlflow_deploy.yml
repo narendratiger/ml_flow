@@ -25,4 +25,4 @@ jobs:
 
       - name: Run Docker container
         run: |
-          docker run -ti -p 5000:5000 narendrakumar291/ml_flow:v3
+          docker run -dti -p 5000:5000 narendrakumar291/ml_flow:v3
